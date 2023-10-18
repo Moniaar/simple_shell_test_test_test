@@ -2,10 +2,9 @@
 #include "scanner.h"
 #include "source.h"
 
-extern struct tokens end_of_tok;
 struct tokens len_of_text;
 /* special token to indicate end of input */
-struct tokens end_of_tok = {.len_of_text = 0};
+struct tokens end_of_tok = len_of_text = 0;
 
 /**
  * addto_buffer - a function to store values inside of a buffer
@@ -47,8 +46,10 @@ void addto_buffer(char ch)
 
 struct tokens *make_token(char *st)
 {
+	struct tokens end_of_tok;
 	char *nst;
 	struct tokens *tk;
+	end_of_tok.len_of_text = 0;
 	tk = malloc(sizeof(struct tokens));
 
 	if (!tk)
