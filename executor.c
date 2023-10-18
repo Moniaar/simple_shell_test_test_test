@@ -155,9 +155,12 @@ int do_simple_command(struct nodes *node)
 	struct nodes *child;
 	int argc, status;
 	long int max_args;
-	char *s;
-	char *argv[max_args + 1];
+	char *s, **argv;
 	status = 0;
+	argv = (char **)malloc((max_args + 1) * sizeof(char *));
+
+	if (argv == NULL)
+		return (NULL);
 
 	if (!node)
 	{
@@ -219,6 +222,7 @@ int do_simple_command(struct nodes *node)
 
 	waitpid(child_pid, &status, 0);
 	free_argv(argc, argv);
+	free(argv);
 
 	return (1);
 }
