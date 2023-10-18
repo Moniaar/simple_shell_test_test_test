@@ -7,7 +7,7 @@
  *
  * @s: variable to use.
  * Return: nothing.
-*/
+ */
 void return_last_char(struct source *s)
 {
 	if (s->cur_pos < 0)
@@ -26,22 +26,15 @@ void return_last_char(struct source *s)
  */
 char Nextchar(struct source *s)
 {
-	char char1;
 
 	if (!s || !s->bu)
 	{
 		errno = ENODATA;
 		return (CHARERROR);
 	}
-
 	if (s->cur_pos == INIT_SRC_POS)
 	{
-		s->cur_pos  = -1;
-	}
-
-	else
-	{
-		char1 = s->bu[s->cur_pos];
+		s->cur_pos = -1;
 	}
 
 	if (++s->cur_pos >= s->bufsize)
