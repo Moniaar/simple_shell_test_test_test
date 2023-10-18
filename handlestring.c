@@ -46,3 +46,77 @@ char *_strcpy(char *dest, char *src)
 
 	return (dest);
 }
+
+/**
+ * *_memset - a function that fills memory with a constant byte.
+ *
+ * @n: bytes of the memory area
+ *
+ * @s: input pointer
+ *
+ * @b: constant byte
+ *
+ * Return: a pointer to the memory area s
+ */
+
+char *_memset(char *s, char b, unsigned int n)
+{
+	unsigned int k;
+
+	k = 0;
+
+	for (k = 0 ; n > 0 ; k++)
+	{
+		s[k] = b;
+		n--;
+	}
+	return (s);
+}
+
+/**
+ * _strlen - A function to return the length of a string
+ *
+ * @s: input character
+ *
+ * Return: int length of a string
+*/
+
+int _strlen(char *s)
+{
+	int cnu;
+
+	for (cnu = 0 ; *s != '\0' ; s++)
+	{
+		++cnu;
+	}
+	return (cnu);
+}
+
+/**
+ * *_strcat -  a function that concatenates two strings
+ *
+ * @src: input string
+ *
+ * @dest: input string
+ *
+ * Return: a pointer to the resulting string dest
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int m, i;
+
+	m = 0;
+
+	while (dest[m])
+		m++;
+
+	for (i = 0 ; src[i] ; i++)
+	{
+		dest[m++] = src[i];
+
+	}
+
+	return (dest);
+}
+
