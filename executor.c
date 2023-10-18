@@ -18,9 +18,9 @@ char *search_path(char *file)
 	char *path;
 	char *p2;
 	struct stat st;
-	plen = p2 - p;
-	alen = strlen(file);
 
+	plen = 0;
+	alen = strlen(file);
 	path = (char *)malloc(plen + 1 + alen + 1);
 	if (path == NULL)
 		return (NULL);
@@ -33,6 +33,7 @@ char *search_path(char *file)
 		{
 			p2++;
 		}
+		plen = p2 - p;
 
 		if (!plen)
 		{
