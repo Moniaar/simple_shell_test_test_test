@@ -18,9 +18,9 @@ char *search_path(char *file)
 	char *path;
 	char *p2;
 	struct stat st;
-
 	plen = p2 - p;
 	alen = strlen(file);
+
 	path = (char *)malloc(plen + 1 + alen + 1);
 	if (path == NULL)
 		return (NULL);
@@ -152,15 +152,16 @@ static inline void free_argv(int argc, char **argv)
 int do_simple_command(struct nodes *node)
 {
 	pid_t child_pid;
+	long int max_args;
 	struct nodes *child;
 	int argc, status;
-	long int max_args;
 	char *s, **argv;
+
 	status = 0;
 	argv = (char **)malloc((max_args + 1) * sizeof(char *));
 
 	if (argv == NULL)
-		return (NULL);
+		return (0);
 
 	if (!node)
 	{
