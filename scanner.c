@@ -46,7 +46,6 @@ void addto_buffer(char ch)
 
 struct tokens *make_token(char *st)
 {
-	struct tokens end_of_tok;
 	char *nst;
 	struct tokens *tk;
 	end_of_tok.len_of_text = 0;
