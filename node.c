@@ -108,11 +108,11 @@ void set_node_string(struct nodes *node, char *val)
 void free_nodetree(struct nodes *node)
 {
 	struct nodes *child, *next;
+
 	if (!node)
 	{
 		return;
 	}
-
 	child = node->firstchild;
 
 	while (child)
