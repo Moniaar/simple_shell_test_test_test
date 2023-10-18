@@ -15,12 +15,15 @@ char *search_path(char *file)
 	char *PATH = getenv("PATH");
 	char *p = PATH;
 	int plen, alen;
-	char path[plen + 1 + alen + 1];
+	char *path;
 	char *p2;
 	struct stat st;
 
 	plen = p2 - p;
 	alen = strlen(file);
+	path = (char *)malloc(plen + 1 + alen + 1);
+	if (path == NULL)
+		return (NULL);
 
 	while (p && *p)
 	{
@@ -77,6 +80,7 @@ char *search_path(char *file)
 			}
 		}
 	}
+	free(path);
 	errno = ENOENT;
 	return (NULL);
 }
