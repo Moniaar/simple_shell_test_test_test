@@ -2,7 +2,7 @@
 #include "node.h"
 #include "executor.h"
 
-/** 
+/**
  * search_path - a function to search the path of your shell
  *
  * @file: thee name of the files inside the path
@@ -47,9 +47,7 @@ char *search_path(char *file)
 		{
 			strcat(path, "/");
 		}
-
 		strcat(path, file);
-
 		if (stat(path, &st) == 0)
 		{
 			if (!S_ISREG(st.st_mode))
@@ -62,13 +60,11 @@ char *search_path(char *file)
 				}
 				continue;
 			}
-
 			p = malloc(strlen(path) + 1);
 			if (!p)
 			{
-				return NULL;
+				return (NULL);
 			}
-
 			strcpy(p, path);
 			return (p);
 		}
@@ -99,6 +95,7 @@ char *search_path(char *file)
 int do_exec_cmd(int argc, char **argv)
 {
 	char *path;
+
 	if (strchr(argv[0], '/'))
 	{
 		execv(argv[0], argv);
@@ -181,7 +178,7 @@ int do_simple_command(struct nodes *node)
 	while (child)
 	{
 		s = child->val.s;
-		argv[argc] = malloc(strlen(s)+1);
+		argv[argc] = malloc(strlen(s) + 1);
 
 		if (!argv[argc])
 		{
@@ -199,10 +196,11 @@ int do_simple_command(struct nodes *node)
 	argv[argc] = NULL;
 
 	child_pid = 0;
+
 	if ((child_pid = fork()) == 0)
 	{
 		do_exec_cmd(argc, argv);
-		fprintf(stderr, "error: failed to execute command: %s\n", strerror(errno));
+		_puts("error: failed to execute command");
 		if (errno == ENOEXEC)
 		{
 			exit(126);
