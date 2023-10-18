@@ -53,7 +53,6 @@ struct nodes *parse_simple_cmd(struct tokens *tk)
 		token_freed(tk);
 
 	} while ((tk = tokenizing(s)) != &end_of_tok);
-
 	return (command);
 }
 
